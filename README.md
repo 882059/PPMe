@@ -39,6 +39,16 @@ Each sample file must contain at least two columns:
 
 Column names can be set with `--rt-col` and `--ratio-col`; Excel sheets with `--sheet` (default `Sheet1`).
 
+### Example
+
+| rt | ratio |
+|----------|----------|
+| 18.042... | 2.14... |
+| 20.151... | 1.10... |
+| 22.559... | 2.38... |
+| 23.926... | 1.39... |
+| ... | ... |
+
 ---
 
 ## Usage
