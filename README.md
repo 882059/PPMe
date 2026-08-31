@@ -7,7 +7,7 @@
 | `evaluate.py` | One-to-one peak matching under a retention-time (RT) tolerance using the Hungarian algorithm; quantifies pairwise sample similarity |
 | `judge.py` | A PyTorch Siamese network that learns difference patterns between a standard and labeled classes (a/b/c/d), classifies a new sample, and reports the same similarity metric and visualizations as `evaluate.py` |
 
-Inputs are peptide-peak tables (`rt` + `ratio`) in `.csv` / `.tsv` / `.txt` / `.xlsx` / `.xls`.
+Inputs are peptide-peak tables (`rt` + `ratio`) in `.csv` / `.xlsx`.
 
 ### Application scenarios
 
