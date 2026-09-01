@@ -117,7 +117,7 @@ train_data/
 python judge.py --standard-file standard.xlsx --train-root train_data --sample-file sample.xlsx
 ```
 
-**Option B: four class directories**
+**Option B: four classes directories**
 
 ```bash
 python judge.py --standard-file standard.xlsx ^
@@ -125,7 +125,7 @@ python judge.py --standard-file standard.xlsx ^
   --sample-file sample.xlsx
 ```
 
-**Option C: manifest (cross-protein pairs)**
+**Option C: cross protein pairs**
 
 Required columns: `standard_file`, `sample_file`, `label` (`label` ∈ a/b/c/d).
 
@@ -133,13 +133,13 @@ Required columns: `standard_file`, `sample_file`, `label` (`label` ∈ a/b/c/d).
 python judge.py --train-manifest train_pairs.csv --sample-file sample.xlsx --standard-file standard.xlsx
 ```
 
-#### Train only (save model)
+#### Train only
 
 ```bash
 python judge.py --standard-file standard.xlsx --train-root train_data --model-path judge_siamese.pt
 ```
 
-#### Predict only (load an existing model)
+#### Predict only
 
 ```bash
 python judge.py --standard-file standard.xlsx --sample-file sample.xlsx --model-path judge_siamese.pt
