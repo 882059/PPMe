@@ -207,7 +207,7 @@ Similarity in `evaluate.py` and `judge.py` follows the same logic.
 
 ## More information
 
-The model mAb-1.pt has been fully trained and is now ready for deployment. Our team will conduct continuous improvements and updates on this model.
+The model `mAb-1.pt` has been fully trained and is now ready for deployment. Our team will conduct continuous improvements and updates on this model.
 
 ---
 
