@@ -114,14 +114,15 @@ train_data/
 ```
 
 ```bash
-python judge.py --standard-file standard.xlsx --train-root train_data --sample-file sample.xlsx
+python judge.py --standard-file standard.xlsx --train-root train_data --val-root val_data --sample-file sample.xlsx
 ```
 
 **Option B: four classes directories**
 
 ```bash
 python judge.py --standard-file standard.xlsx ^
-  --train-a-dir data/a --train-b-dir data/b --train-c-dir data/c --train-d-dir data/d ^
+  --train-a-dir train_data/a --train-b-dir train_data/b --train-c-dir train_data/c --train-d-dir train_data/d ^
+  --val-a-dir val_data/a --val-b-dir val_data/b --val-c-dir val_data/c --val-d-dir val_data/d ^
   --sample-file sample.xlsx
 ```
 
@@ -130,19 +131,19 @@ python judge.py --standard-file standard.xlsx ^
 Required columns: `standard_file`, `sample_file`, `label` (`label` ∈ a/b/c/d).
 
 ```bash
-python judge.py --train-manifest train_pairs.csv --sample-file sample.xlsx --standard-file standard.xlsx
+python judge.py --train-root train_data --val-root val_data --sample-file sample.xlsx --standard-file standard.xlsx
 ```
 
 #### Train only
 
 ```bash
-python judge.py --standard-file standard.xlsx --train-root train_data --model-path judge_siamese.pt
+python judge.py --standard-file standard.xlsx --train-root train_data  --val-root val_data --model-path model.pt
 ```
 
 #### Predict only
 
 ```bash
-python judge.py --standard-file standard.xlsx --sample-file sample.xlsx --model-path judge_siamese.pt
+python judge.py --standard-file standard.xlsx --sample-file sample.xlsx --model-path model.pt
 ```
 
 #### Train + predict example
@@ -151,14 +152,37 @@ python judge.py --standard-file standard.xlsx --sample-file sample.xlsx --model-
 python judge.py ^
   --standard-file standard.xlsx ^
   --train-root train_data ^
+  --val-root val_data ^
   --sample-file sample.xlsx ^
   --delta-min 0.2 ^
   --min-ratio 0.5 ^
   --device cuda ^
-  --model-path judge_siamese.pt
+  --model-path model.pt
 ```
 
-**Primary outputs**
+**Primary inputs & outputs**
+
+| Argument | Description |
+|----------|-------------|
+| `--standard-file` | The file name of the standard file |
+| `--sample-file` | The file name of the sample file |
+| `--train-root` | Folder containing subfolders a/b/c/d for single-standard training |
+| `--val-root` | Folder containing subfolders a/b/c/d for single-standard validation |
+| `--model-path` | Path for the model (saving path or applying path) |
+| `--dropout` | Dropout probability for encoder/head (default 0.25) |
+| `--label-smoothing` | Label smoothing for cross-entropy (default 0) |
+| `--reduce-lr-factor` | Factor to reduce LR on plateau (default 0.5) |
+| `--reduce-lr-patience` | ReduceLROnPlateau patience (default 3)  |
+| `--min-lr` | Minimum LR after reductions (default 1e-6) |
+| `--early-stopping-patience` | Early stopping patience in epochs (default 10) |
+| `--epochs` | Default 300 |
+| `--batch-size` | Default 16 |
+| `--lr` | Default 1e-3 |
+| `--weight-decay` | Default 1e-4 |
+| `--contrastive-weight` | Default 0.2 |
+| `--temperature` | Default 0.2 |
+| `--val-ratio` | Default 0.25 |
+| `--seed` | The seed of training |
 
 | File (default name) | Content |
 |---------------------|---------|
